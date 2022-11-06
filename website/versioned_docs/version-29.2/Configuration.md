@@ -1525,6 +1525,26 @@ async function runTests(
 ): Promise<void>;
 ```
 
+#### Example of a custom runner
+
+```ts
+class CustomRunner {
+  constructor(globalConfig) {
+    this.globalConfig = globalConfig
+  }
+  
+  runTests (
+    tests: Array<Test>,
+    watcher: TestWatcher,
+    onStart: OnTestStart,
+    onResult: OnTestSuccess,
+    onFailure: OnTestFailure,
+    options: TestRunnerOptions,
+  ): Promise<void> {
+  }
+}
+```
+
 If you need to restrict your test-runner to only run in serial rather than being executed in parallel your class should have the property `isSerial` to be set as `true`.
 
 ### `sandboxInjectedGlobals` \[array&lt;string&gt;]
